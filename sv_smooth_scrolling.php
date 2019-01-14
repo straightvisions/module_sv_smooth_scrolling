@@ -16,8 +16,8 @@
 			$this->path								= $path;
 			$this->url								= $url;
 			$this->name								= get_class($this);
-			
+		}
+		public function init() {
 			$this->module_enqueue_scripts(false);
 		}
 	}
-?>
