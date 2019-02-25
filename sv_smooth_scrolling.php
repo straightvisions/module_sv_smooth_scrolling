@@ -1,23 +1,29 @@
 <?php
-	namespace sv_100;
-	
-	/**
-	 * @author			Matthias Reuter
-	 * @package			sv_100
-	 * @copyright		2017 Matthias Reuter
-	 * @link			https://straightvisions.com
-	 * @since			1.0
-	 * @license			See license.txt or https://straightvisions.com
-	 */
-	class sv_smooth_scrolling extends init{
-		static $scripts_loaded						= false;
+namespace sv_100;
 
-		public function __construct($path,$url){
-			$this->path								= $path;
-			$this->url								= $url;
-			$this->name								= get_class($this);
-		}
-		public function init() {
-			$this->module_enqueue_scripts(false);
-		}
+/**
+ * @version         1.00
+ * @author			straightvisions GmbH
+ * @package			sv_100
+ * @copyright		2017 straightvisions GmbH
+ * @link			https://straightvisions.com
+ * @since			1.0
+ * @license			See license.txt or https://straightvisions.com
+ */
+
+class sv_smooth_scrolling extends init {
+	public function __construct() {
+
 	}
+
+	public function init() {
+		// Module Info
+		$this->set_module_title( 'SV Smooth Scrolling' );
+		$this->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', $this->get_module_name() ) );
+
+		// Loads Scripts
+		static::$scripts->create( $this )
+		                ->set_source( $this->get_file_url( 'lib/js/frontend.js' ), $this->get_file_path( 'lib/js/frontend.js' ) )
+		                ->set_type( 'js' );
+	}
+}
