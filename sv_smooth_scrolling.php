@@ -23,7 +23,9 @@ class sv_smooth_scrolling extends init {
 
 		// Loads Scripts
 		static::$scripts->create( $this )
-		                ->set_path( 'lib/js/frontend.js' )
-		                ->set_type( 'js' );
+			->set_ID('frontend')
+			->set_path( 'lib/js/frontend.js' )
+			->set_type( 'js' )
+			->set_is_enqueued();
 	}
 }
