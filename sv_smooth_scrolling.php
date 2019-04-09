@@ -17,6 +17,9 @@ class sv_smooth_scrolling extends init {
 	}
 
 	public function init() {
+		// Translates the module
+		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+
 		// Module Info
 		$this->set_module_title( 'SV Smooth Scrolling' );
 		$this->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', $this->get_module_name() ) );
