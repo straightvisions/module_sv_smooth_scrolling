@@ -1,5 +1,5 @@
 <?php
-namespace sv_100;
+namespace sv100;
 
 /**
  * @version         1.00
@@ -12,23 +12,34 @@ namespace sv_100;
  */
 
 class sv_smooth_scrolling extends init {
-	public function __construct() {
-
-	}
-
 	public function init() {
-		// Translates the module
-		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
-
-		// Module Info
-		$this->set_module_title( 'SV Smooth Scrolling' );
-		$this->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', $this->get_module_name() ) );
-
+		$this->set_module_title( 'SV Smooth Scrolling' )
+			->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', 'sv100' ) )
+			->load_settings()
+			->register_scripts()
+			->set_section_title( __( 'Smooth Scrolling', 'sv100' ) )
+			->set_section_desc( __( 'Manage Scroll Speed', 'sv100' ) )
+			->set_section_type( 'settings' )
+			->get_root()
+			->add_section( $this );
+	}
+	public function register_scripts(){
 		// Loads Scripts
-		static::$scripts->create( $this )
-			->set_ID('frontend')
-			->set_path( 'lib/js/frontend.js' )
-			->set_type( 'js' )
-			->set_is_enqueued();
+		if($this->get_setting( 'activate' )->run_type()->get_data()) {
+			$this->get_script('frontend')
+				->set_path('lib/js/frontend.js')
+				->set_type('js')
+				->set_is_enqueued();
+		}
+
+		return $this;
+	}
+	public function load_settings(){
+		$this->get_setting( 'activate' )
+			->set_title( __( 'Activate', 'sv100' ) )
+			->set_description( __( 'Activate Smooth Scrolling.', 'sv100' ) )
+			->load_type( 'checkbox' );
+
+		return $this;
 	}
 }
