@@ -13,7 +13,7 @@ namespace sv100;
 
 class sv_smooth_scrolling extends init {
 	public function init() {
-		$this->set_module_title( 'SV Smooth Scrolling' )
+		$this->set_module_title( __( 'SV Smooth Scrolling', 'sv100' ) )
 			->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', 'sv100' ) )
 			->load_settings()
 			->register_scripts()
