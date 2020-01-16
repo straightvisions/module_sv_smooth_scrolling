@@ -1,5 +1,5 @@
 <?php
-namespace sv100;
+namespace sv100_companion;
 
 /**
  * @version         1.00
@@ -11,14 +11,12 @@ namespace sv100;
  * @license			See license.txt or https://straightvisions.com
  */
 
-class sv_smooth_scrolling extends init {
+class sv_smooth_scrolling extends modules {
 	public function init() {
-		$this->set_module_title( __( 'SV Smooth Scrolling', 'sv100' ) )
-			->set_module_desc( __( 'This module gives the ability to manage the scroll speed.', 'sv100' ) )
-			->load_settings()
+		$this->load_settings()
 			->register_scripts()
-			->set_section_title( __( 'Smooth Scrolling', 'sv100' ) )
-			->set_section_desc( __( 'Manage Scroll Speed', 'sv100' ) )
+			->set_section_title( __( 'Smooth Scrolling', 'sv100_companion' ) )
+			->set_section_desc( __( 'Slide to Anker', 'sv100_companion' ) )
 			->set_section_type( 'settings' )
 			->get_root()
 			->add_section( $this );
@@ -36,8 +34,8 @@ class sv_smooth_scrolling extends init {
 	}
 	public function load_settings(){
 		$this->get_setting( 'activate' )
-			->set_title( __( 'Activate', 'sv100' ) )
-			->set_description( __( 'Activate Smooth Scrolling.', 'sv100' ) )
+			->set_title( __( 'Activate', 'sv100_companion' ) )
+			->set_description( __( 'Activate Smooth Scrolling.', 'sv100_companion' ) )
 			->load_type( 'checkbox' );
 
 		return $this;
