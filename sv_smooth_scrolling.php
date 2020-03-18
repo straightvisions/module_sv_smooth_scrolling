@@ -23,7 +23,7 @@ class sv_smooth_scrolling extends modules {
 	}
 	public function register_scripts(){
 		// Loads Scripts
-		if($this->get_setting( 'activate' )->run_type()->get_data()) {
+		if($this->get_setting( 'activate' )->get_data()) {
 			$this->get_script('frontend')
 				->set_path('lib/js/frontend.js')
 				->set_type('js')
