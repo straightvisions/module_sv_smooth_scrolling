@@ -2,7 +2,7 @@
 namespace sv100_companion;
 
 /**
- * @version         1.00
+ * @version         4.004
  * @author			straightvisions GmbH
  * @package			sv_100
  * @copyright		2017 straightvisions GmbH
