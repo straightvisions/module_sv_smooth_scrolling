@@ -27,7 +27,6 @@ class sv_smooth_scrolling extends modules {
 			$this->get_script('frontend')
 				->set_path('lib/js/frontend.js')
 				->set_type('js')
-				->set_deps(array('jquery'))
 				->set_is_enqueued();
 		}
 
