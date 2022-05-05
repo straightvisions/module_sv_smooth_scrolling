@@ -1,16 +1,6 @@
 <?php
 namespace sv100_companion;
 
-/**
- * @version         4.004
- * @author			straightvisions GmbH
- * @package			sv_100
- * @copyright		2017 straightvisions GmbH
- * @link			https://straightvisions.com
- * @since			1.0
- * @license			See license.txt or https://straightvisions.com
- */
-
 class sv_smooth_scrolling extends modules {
 	public function init() {
 		$this->load_settings()
@@ -21,18 +11,24 @@ class sv_smooth_scrolling extends modules {
 			->get_root()
 			->add_section( $this );
 	}
-	public function register_scripts(){
+	public function register_scripts(): sv_smooth_scrolling{
 		// Loads Scripts
 		if($this->get_setting( 'activate' )->get_data()) {
 			$this->get_script('frontend')
 				->set_path('lib/js/frontend.js')
 				->set_type('js')
 				->set_is_enqueued();
+
+			add_filter( 'rocket_delay_js_exclusions', function ( $excluded_files = array() ) {
+				$excluded_files[] = $this->get_name();
+
+				return $excluded_files;
+			} );
 		}
 
 		return $this;
 	}
-	public function load_settings(){
+	public function load_settings(): sv_smooth_scrolling{
 		$this->get_setting( 'activate' )
 			->set_title( __( 'Activate', 'sv100_companion' ) )
 			->set_description( __( 'Activate Smooth Scrolling.', 'sv100_companion' ) )
